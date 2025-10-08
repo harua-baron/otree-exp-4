@@ -1,4 +1,5 @@
 from os import environ
+import dj_database_url
 
 
 SESSION_CONFIGS = [
@@ -29,6 +30,15 @@ LANGUAGE_CODE = 'ja'
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'JPY'
 USE_POINTS = True
+
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=environ.get('DATABASE_URL', 'sqlite:///db.sqlite3')
+    )
+}
+
+
 
 ROOMS = [
     dict(
